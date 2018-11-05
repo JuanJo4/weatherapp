@@ -1,8 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import Home from './components/Home'
 
 ReactDOM.render(
-  <App />,
+  <Home
+    title=" Weather App JG"
+    subtitle="Enter a City and State"
+  />,
   document.getElementById('app'),
 )

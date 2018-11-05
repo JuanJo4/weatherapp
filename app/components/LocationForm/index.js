@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class LocationForm extends React.Component {
+export default class LocationForm extends React.Component {
   constructor(props) {
     super(props)
 
@@ -34,5 +34,3 @@ class LocationForm extends React.Component {
 LocationForm.propTypes = {
   formStyle: PropTypes.string.isRequired,
 }
-
-export default LocationForm

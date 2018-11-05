@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import LocationForm from '../LocationForm'
 
-function Header(props) {
+export default function Header(props) {
   const { title } = props
 
   return (
@@ -16,5 +16,3 @@ function Header(props) {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
 }
-
-export default Header
