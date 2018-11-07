@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Form, Input, SubmitButton } from './styledComponents'
 
 export default class LocationForm extends React.Component {
   constructor(props) {
@@ -20,17 +21,22 @@ export default class LocationForm extends React.Component {
 
   render() {
     const { path } = this.state
-    const { formStyle } = this.props
+    const { formStyle, placeholder } = this.props
 
     return (
-      <form className={formStyle} action={path}>
-        <input type="text" onChange={this.handleChange} />
-        <input type="submit" value="Get Weather" />
-      </form>
+      <Form className={formStyle} action={path}>
+        <Input type="text" placeholder={placeholder} onChange={this.handleChange} />
+        <SubmitButton type="submit" value="Get Weather" />
+      </Form>
     )
   }
 }
 
 LocationForm.propTypes = {
   formStyle: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+}
+
+LocationForm.defaultProps = {
+  placeholder: '',
 }

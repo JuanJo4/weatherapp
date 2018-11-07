@@ -12,7 +12,7 @@ export default function Home(props) {
       <Header title={title} />
       <Box>
         <h2>{subtitle}</h2>
-        <LocationForm formStyle="stacked" />
+        <LocationForm formStyle="stacked" placeholder="St. George, Utah" />
       </Box>
     </Container>
   )
