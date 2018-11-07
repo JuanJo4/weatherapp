@@ -2,20 +2,21 @@ import styled from 'styled-components'
 // import breakpoint from 'styled-components-breakpoint'
 
 export const Container = styled.div`
-  font-family: 'Helvetica';
+  font-family: 'Raleway';
   color: #fff;
-
-  h1 {
-    font-size: 30px;
-    font-weight: bold;
-    padding: 10px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
 `
 
 export const Box = styled.div`
-  background-color: #456;
+  background: url('../public/images/pattern.svg');
+  background-size: cover;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `
