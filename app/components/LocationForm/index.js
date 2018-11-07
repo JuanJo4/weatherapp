@@ -7,7 +7,7 @@ export default class LocationForm extends React.Component {
     super(props)
 
     this.state = {
-      path: '/forecast/',
+      city: '',
     }
   }
 
@@ -15,17 +15,17 @@ export default class LocationForm extends React.Component {
     const { value } = event.target
 
     this.setState(() => ({
-      path: `/forecast/${value}`,
+      city: value,
     }))
   }
 
   render() {
-    const { path } = this.state
+    const { city } = this.state
     const { formStyle, placeholder } = this.props
 
     return (
-      <Form className={formStyle} action={path}>
-        <Input type="text" placeholder={placeholder} onChange={this.handleChange} />
+      <Form className={formStyle} action={`/forecast/${city}`}>
+        <Input type="text" placeholder={placeholder} value={city} onChange={this.handleChange} />
         <SubmitButton type="submit" value="Get Weather" />
       </Form>
     )
