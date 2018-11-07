@@ -1,12 +1,6 @@
 import styled from 'styled-components'
-// import breakpoint from 'styled-components-breakpoint'
 
-export const Container = styled.div`
-  font-family: 'Raleway';
-  color: #fff;
-`
-
-export const Box = styled.div`
+const Box = styled.div`
   background: url('../public/images/pattern.svg');
   background-size: cover;
   height: 85vh;
@@ -20,3 +14,4 @@ export const Box = styled.div`
     margin-bottom: 30px;
   }
 `
+export { Box as default }
