@@ -3,6 +3,9 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 import moment from 'moment'
+import {
+  Wrapper, ForecastWrapper, Day, Hours,
+} from './styledComponents'
 
 function formatingForecast(data) {
   const res = []
@@ -60,6 +63,7 @@ export default class Forecast extends React.Component {
       .then((response) => {
         console.log('R', response)
         this.setState(() => ({
+          title: city,
           forecast: formatingForecast(response.data.list),
         }))
       })
@@ -69,17 +73,21 @@ export default class Forecast extends React.Component {
   }
 
   render() {
-    const { forecast } = this.state
+    const { title, forecast } = this.state
 
     return (
-      <React.Fragment>
-        <h2>City Title</h2>
-        <div className="forecast-wrapper">
+      <Wrapper>
+        <h2>{title}</h2>
+        <ForecastWrapper>
           {forecast.map(d => (
-            <div className="day" key={d.date}>
+            <Day key={d.date}>
               <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} />
-
-              <div className="hours">
+              <h3>
+                <Moment format="dddd, MMM Do">
+                  {d.date}
+                </Moment>
+              </h3>              
+              <Hours>
                 {d.dayforecast.map(dd => (
                   <div key={dd.date}>
                     <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} />
@@ -90,16 +98,11 @@ export default class Forecast extends React.Component {
                     </p>
                   </div>
                 ))}
-              </div>
-              <h3>
-                <Moment format="dddd, MMM Do">
-                  {d.date}
-                </Moment>
-              </h3>
-            </div>
+              </Hours>
+            </Day>
           ))}
-        </div>
-      </React.Fragment>
+        </ForecastWrapper>
+      </Wrapper>
     )
   }
 }
