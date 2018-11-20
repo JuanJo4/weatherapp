@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Box = styled.div`
   background: url('../public/images/pattern.svg');
   background-size: cover;
-  height: 85vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
