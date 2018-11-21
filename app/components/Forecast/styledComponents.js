@@ -23,8 +23,8 @@ export const Day = styled.div`
     margin: 0 2em 1em 2em;
 
     img {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 
     h3 {
@@ -35,19 +35,21 @@ export const Day = styled.div`
 
 export const Hours = styled.div`
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
 
     div {
-        text-align: center;
-        margin: 0 0.3em;
+        display: flex;
+        align-items: center;
+        margin: 0.3em;
 
         img {
             width: 30px;
             height: 30px;
+            margin: 0 0.5em;
         }
 
         p {
+            margin: 0 0.5em;
             font-size: 0.8em;
         }
     }

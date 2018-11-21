@@ -91,12 +91,13 @@ export default class Forecast extends React.Component {
               <Hours>
                 {d.dayforecast.map(dd => (
                   <div key={dd.date}>
-                    <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} title={dd.description} />
                     <p>
                       <Moment format="hh:mm A">
                         {dd.date}
                       </Moment>
                     </p>
+                    -
+                    <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} title={dd.description} />
                   </div>
                 ))}
               </Hours>
