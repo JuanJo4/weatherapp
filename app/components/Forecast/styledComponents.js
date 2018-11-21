@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    color: #0e0e0e;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +11,6 @@ export const Wrapper = styled.div`
     }
 `
 export const ForecastWrapper = styled.div`
-    color: #0e0e0e;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

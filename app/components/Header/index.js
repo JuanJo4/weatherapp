@@ -7,7 +7,9 @@ export default function Header(props) {
   const { title, currentSearch } = props
   return (
     <HeaderWrapper>
-      <h1>{title}</h1>
+      <a href="/">
+        <h1>{title}</h1>
+      </a>
       <LocationForm formStyle="lineal" currentSearch={currentSearch} placeholder="St. George, Utah" />
     </HeaderWrapper>
   )

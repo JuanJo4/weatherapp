@@ -9,10 +9,15 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  h1 {
-    font-size: 30px;
-    font-weight: bold;
-    padding: 10px;
+  a {
+    text-decoration: none;
+    color: #fff;
+    
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px;
+    }
   }
 
   ${breakpoint('tablet')`
