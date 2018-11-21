@@ -61,7 +61,6 @@ export default class Forecast extends React.Component {
 
     axios.get(url)
       .then((response) => {
-        console.log('R', response)
         this.setState(() => ({
           title: city,
           forecast: formatingForecast(response.data.list),
@@ -79,9 +78,9 @@ export default class Forecast extends React.Component {
       <Wrapper>
         <h2>{title}</h2>
         <ForecastWrapper>
-          {forecast.map(d => (
+          {forecast.slice(0,5).map(d => (
             <Day key={d.date}>
-              <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} />
+              <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} title={d.description} />
               <h3>
                 <Moment format="dddd, MMM Do">
                   {d.date}
@@ -90,7 +89,7 @@ export default class Forecast extends React.Component {
               <Hours>
                 {d.dayforecast.map(dd => (
                   <div key={dd.date}>
-                    <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} />
+                    <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} title={dd.description} />
                     <p>
                       <Moment format="hh:mm A">
                         {dd.date}
