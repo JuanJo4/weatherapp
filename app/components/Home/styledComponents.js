@@ -7,6 +7,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #fff;
 
   h2 {
     font-size: 40px;
