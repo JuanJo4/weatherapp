@@ -11,16 +11,32 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
 `
 
-export default function App() {
-  return (
-    <Router>
-      <Container>
-        <GlobalStyle />
-        <Header title="Weather App JG" />
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
 
-        <Route exact path="/" render={() => <Home heroText="Enter a City and State" />} />
-        <Route path="/forecast/" component={Forecast} />
-      </Container>
-    </Router>
-  )
+    this.state = {
+      currentSearch: '',
+    }
+  }
+
+  updateCurrentSearch = (q) => {
+    this.setState(() => ({
+      currentSearch: q,
+    }))
+  }
+
+  render() {
+    const { currentSearch } = this.state
+    return (
+      <Router>
+        <Container>
+          <GlobalStyle />
+          <Header title="Weather App JG" currentSearch={currentSearch} />
+          <Route exact path="/" render={() => <Home heroText="Enter a City and State" />} />
+          <Route path="/forecast/" render={props => <Forecast updateCurrentSearch={this.updateCurrentSearch} {...props} />} />
+        </Container>
+      </Router>
+    )
+  }
 }

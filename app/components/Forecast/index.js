@@ -54,10 +54,12 @@ export default class Forecast extends React.Component {
   componentDidMount() {
     // Get forecast from openweather api
     const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast/'
-    const { location } = this.props
+    const { updateCurrentSearch, location } = this.props
     const city = location.pathname.split('/')[2]
     const apiKey = '52ebf7e7ac1cc952fdeb6fd0e93a7a57'
     const url = `${baseUrl}?q=${city}&appid=${apiKey}&cnt=40`
+    //  Update state to get current search
+    updateCurrentSearch(city)
 
     axios.get(url)
       .then((response) => {
@@ -107,5 +109,6 @@ export default class Forecast extends React.Component {
 }
 
 Forecast.propTypes = {
+  updateCurrentSearch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 }

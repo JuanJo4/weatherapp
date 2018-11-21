@@ -4,16 +4,16 @@ import LocationForm from '../LocationForm'
 import HeaderWrapper from './styledComponents'
 
 export default function Header(props) {
-  const { title } = props
-
+  const { title, currentSearch } = props
   return (
     <HeaderWrapper>
       <h1>{title}</h1>
-      <LocationForm formStyle="lineal" placeholder="St. George, Utah" />
+      <LocationForm formStyle="lineal" currentSearch={currentSearch} placeholder="St. George, Utah" />
     </HeaderWrapper>
   )
 }
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  currentSearch: PropTypes.string.isRequired,
 }

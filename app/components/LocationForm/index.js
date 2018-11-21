@@ -20,12 +20,12 @@ export default class LocationForm extends React.Component {
   }
 
   render() {
+    const { formStyle, currentSearch, placeholder } = this.props
     const { city } = this.state
-    const { formStyle, placeholder } = this.props
 
     return (
       <Form className={formStyle} action={`/forecast/${city}`}>
-        <Input type="text" placeholder={placeholder} value={city} onChange={this.handleChange} />
+        <Input type="text" placeholder={placeholder} value={city || currentSearch} onChange={this.handleChange} />
         <SubmitButton type="submit" value="Get Weather" />
       </Form>
     )
@@ -35,8 +35,10 @@ export default class LocationForm extends React.Component {
 LocationForm.propTypes = {
   formStyle: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  currentSearch: PropTypes.string,
 }
 
 LocationForm.defaultProps = {
   placeholder: '',
+  currentSearch: '',
 }
