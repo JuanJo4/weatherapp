@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'query-string'
 import Moment from 'react-moment'
+import Wrapper from './styledComponents'
 
 export default class WeatherDetail extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export default class WeatherDetail extends React.Component {
     } = this.state
 
     return (
-      <>
+      <Wrapper>
         <img src={`/public/images/weather-icons/${icon}.svg`} alt={description} title={description} />
         <h3>
           <Moment format="dddd, MMM Do">
@@ -56,7 +57,7 @@ export default class WeatherDetail extends React.Component {
         <p>{`min temp: ${(tempmin - 273.15).toFixed(2)} degrees`}</p>
         <p>{`max temp: ${(tempmax - 273.15).toFixed(2)} degrees`}</p>
         <p>{`humidity: ${humidity}`}</p>
-      </>
+      </Wrapper>
     )
   }
 }
