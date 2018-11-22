@@ -13,6 +13,7 @@ const Box = styled.div`
     font-size: 40px;
     text-align: center;
     margin-bottom: 30px;
+    padding: 0 0.1em;
   }
 `
 export { Box as default }
