@@ -37,7 +37,12 @@ function formatingForecast(data) {
       res[mainIndex].date = item.dt_txt
       res[mainIndex].icon = item.weather[0].icon
       res[mainIndex].description = item.weather[0].description
+      res[mainIndex].tempmin = item.main.temp_min
+      res[mainIndex].tempmax = item.main.temp_max
+      res[mainIndex].humidity = item.main.humidity
     }
+
+    return item
   })
 
   return res
@@ -81,31 +86,35 @@ export default class Forecast extends React.Component {
       <Wrapper>
         <h2>{title}</h2>
         <ForecastWrapper>
-          {forecast.slice(0, 5).map(d => (
-            <Day key={d.date}>
-              <a href={`/detail/${title}/${d.date.split(' ')[0]}`}>
-                <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} title={d.description} />
-                <h3>
-                  <Moment format="dddd, MMM Do">
-                    {d.date}
-                  </Moment>
-                </h3>
-              </a>
-              <Hours>
-                {d.dayforecast.map(dd => (
-                  <div key={dd.date}>
-                    <p>
-                      <Moment format="hh:mm A">
-                        {dd.date}
-                      </Moment>
-                    </p>
-                    -
-                    <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} title={dd.description} />
-                  </div>
-                ))}
-              </Hours>
-            </Day>
-          ))}
+          {forecast.slice(0, 5).map((d) => {
+            const params = `desc=${d.description}&hum=${d.humidity}&max=${d.tempmax}&min=${d.tempmin}&icon=${d.icon}`
+
+            return (
+              <Day key={d.date}>
+                <a href={`/detail/${title}/${d.date}?${params}`}>
+                  <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} title={d.description} />
+                  <h3>
+                    <Moment format="dddd, MMM Do">
+                      {d.date}
+                    </Moment>
+                  </h3>
+                </a>
+                <Hours>
+                  {d.dayforecast.map(dd => (
+                    <div key={dd.date}>
+                      <p>
+                        <Moment format="hh:mm A">
+                          {dd.date}
+                        </Moment>
+                      </p>
+                      -
+                      <img src={`/public/images/weather-icons/${dd.icon}.svg`} alt={dd.description} title={dd.description} />
+                    </div>
+                  ))}
+                </Hours>
+              </Day>
+            )
+          })}
         </ForecastWrapper>
       </Wrapper>
     )

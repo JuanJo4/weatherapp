@@ -40,9 +40,9 @@ export const Day = styled.div`
             margin-bottom: 0.5em;
         }
 
-        &:hover {;
+        &:hover {
             img {
-                top: -10px;
+                top: -5px;
             }
         }
     }
