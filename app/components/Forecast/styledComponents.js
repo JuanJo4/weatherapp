@@ -22,14 +22,29 @@ export const Day = styled.div`
     align-items: center;
     margin: 0 2em 1em 2em;
 
-    img {
-        width: 200px;
-        height: 200px;
-    }
+    a {
+        transition: all 0.5s ease;
+        position: relative;
+        text-decoration: none;
+        color: #0e0e0e;
 
-    h3 {
-        font-size: 1.5em;
-        margin-bottom: 0.5em;
+        img {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        &:hover {;
+            img {
+                top: -10px;
+            }
+        }
     }
 `
 

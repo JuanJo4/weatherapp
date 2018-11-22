@@ -12,6 +12,7 @@ function formatingForecast(data) {
 
   let mainIndex = -1
   let day = ''
+
   data.map((item) => {
     const itemday = moment(item.dt_txt)
 
@@ -32,7 +33,7 @@ function formatingForecast(data) {
       description: item.weather[0].description,
     })
 
-    if (itemday.format('HH') >= 12) {
+    if (res[mainIndex].date === '' && itemday.format('HH') >= 12) {
       res[mainIndex].date = item.dt_txt
       res[mainIndex].icon = item.weather[0].icon
       res[mainIndex].description = item.weather[0].description
@@ -80,14 +81,16 @@ export default class Forecast extends React.Component {
       <Wrapper>
         <h2>{title}</h2>
         <ForecastWrapper>
-          {forecast.slice(0,5).map(d => (
+          {forecast.slice(0, 5).map(d => (
             <Day key={d.date}>
-              <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} title={d.description} />
-              <h3>
-                <Moment format="dddd, MMM Do">
-                  {d.date}
-                </Moment>
-              </h3>              
+              <a href={`/detail/${title}/${d.date.split(' ')[0]}`}>
+                <img src={`/public/images/weather-icons/${d.icon}.svg`} alt={d.description} title={d.description} />
+                <h3>
+                  <Moment format="dddd, MMM Do">
+                    {d.date}
+                  </Moment>
+                </h3>
+              </a>
               <Hours>
                 {d.dayforecast.map(dd => (
                   <div key={dd.date}>
