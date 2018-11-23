@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 
     h2 {
         font-size: 5em;
+        padding: 0 100px;
     }
 `
 export const ForecastWrapper = styled.div`

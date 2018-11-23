@@ -78,7 +78,11 @@ export default class Forecast extends React.Component {
         }))
       })
       .catch((err) => {
-        throw new Error(err)
+        this.setState(() => ({
+          loading: false,
+          title: 'Oops, something wrong happened. Maybe there is no data for the city you searched for.',
+          forecast: [],
+        }))
       })
   }
 
