@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import qs from 'query-string'
 import Moment from 'react-moment'
+import { GridLoader } from 'react-spinners'
 import Wrapper from './styledComponents'
 
 export default class WeatherDetail extends React.Component {
@@ -9,6 +10,7 @@ export default class WeatherDetail extends React.Component {
     super(props)
 
     this.state = {
+      loading: true,
       date: '',
       city: '',
       description: '',
@@ -29,6 +31,7 @@ export default class WeatherDetail extends React.Component {
     updateCurrentSearch(city)
 
     this.setState(() => ({
+      loading: false,
       date,
       city,
       description: params.desc,
@@ -41,11 +44,18 @@ export default class WeatherDetail extends React.Component {
 
   render() {
     const {
-      date, city, description, tempmin, tempmax, humidity, icon,
+      loading, date, city, description, tempmin, tempmax, humidity, icon,
     } = this.state
 
     return (
       <Wrapper>
+        <GridLoader
+          className="spinner"
+          sizeUnit="px"
+          size={15}
+          color="#82a5b4"
+          loading={loading}
+        />
         <img src={`/public/images/weather-icons/${icon}.svg`} alt={description} title={description} />
         <h3>
           <Moment format="dddd, MMM Do">

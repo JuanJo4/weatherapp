@@ -4,10 +4,10 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2em;
 
     h2 {
         font-size: 5em;
-        margin-top: 0.5em;
     }
 `
 export const ForecastWrapper = styled.div`

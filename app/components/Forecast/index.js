@@ -3,6 +3,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 import moment from 'moment'
+import { GridLoader } from 'react-spinners'
 import {
   Wrapper, ForecastWrapper, Day, Hours,
 } from './styledComponents'
@@ -53,6 +54,7 @@ export default class Forecast extends React.Component {
     super(props)
 
     this.state = {
+      loading: true,
       forecast: [],
     }
   }
@@ -70,6 +72,7 @@ export default class Forecast extends React.Component {
     axios.get(url)
       .then((response) => {
         this.setState(() => ({
+          loading: false,
           title: city,
           forecast: formatingForecast(response.data.list),
         }))
@@ -80,10 +83,17 @@ export default class Forecast extends React.Component {
   }
 
   render() {
-    const { title, forecast } = this.state
+    const { loading, title, forecast } = this.state
 
     return (
       <Wrapper>
+        <GridLoader
+          className="spinner"
+          sizeUnit="px"
+          size={15}
+          color="#82a5b4"
+          loading={loading}
+        />
         <h2>{title}</h2>
         <ForecastWrapper>
           {forecast.slice(0, 5).map((d) => {
