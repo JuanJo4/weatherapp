@@ -29,14 +29,15 @@ export default class App extends React.Component {
 
   render() {
     const { currentSearch } = this.state
+
     return (
       <Router>
         <Container>
           <GlobalStyle />
-          <Header title="Weather App JG" currentSearch={currentSearch} />
-          <Route exact path="/" render={() => <Home heroText="Enter a City and State" />} />
-          <Route path="/forecast/" render={props => <Forecast updateCurrentSearch={this.updateCurrentSearch} {...props} />} />
-          <Route path="/detail/" render={props => <WeatherDetail updateCurrentSearch={this.updateCurrentSearch} {...props} />} />
+          <Header title="Weather App JG" currentSearch={currentSearch} updateCurrentSearch={this.updateCurrentSearch} />
+          <Route exact path="/" render={() => <Home heroText="Enter a City and State" currentSearch={currentSearch} updateCurrentSearch={this.updateCurrentSearch} />} />
+          <Route path="/forecast/" render={props => <Forecast currentSearch={currentSearch} updateCurrentSearch={this.updateCurrentSearch} {...props} />} />
+          <Route path="/detail/" render={props => <WeatherDetail currentSearch={currentSearch} updateCurrentSearch={this.updateCurrentSearch} {...props} />} />
         </Container>
       </Router>
     )
