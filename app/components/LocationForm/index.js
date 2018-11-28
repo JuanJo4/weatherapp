@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router'
+import { Redirect, Switch } from 'react-router'
 import { Form, Input, SubmitButton } from './styledComponents'
 
 export default class LocationForm extends React.Component {
@@ -29,11 +29,12 @@ export default class LocationForm extends React.Component {
   render() {
     const { toForecast } = this.state
     const { formStyle, currentSearch, placeholder } = this.props
+    const shouldRedirect = toForecast && window.location.pathname !== '/forecast'
 
     return (
-      (toForecast && <Redirect to={`/forecast/${currentSearch}`} />)
+      (shouldRedirect && <Switch><Redirect to={`/forecast?c=${currentSearch}`} /></Switch>)
       || (
-        <Form className={formStyle} action={`/forecast/${currentSearch}`} onSubmit={this.handleSubmit}>
+        <Form className={formStyle} action={`/forecast?c=${currentSearch}`} onSubmit={this.handleSubmit}>
           <Input type="text" placeholder={placeholder} value={currentSearch} onChange={this.handleChange} />
           <SubmitButton type="submit" value="Get Weather" />
         </Form>

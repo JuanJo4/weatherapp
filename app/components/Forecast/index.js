@@ -3,6 +3,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 import moment from 'moment'
+import qs from 'query-string'
 import { GridLoader } from 'react-spinners'
 import {
   Wrapper, ForecastWrapper, Day, Hours,
@@ -63,7 +64,8 @@ export default class Forecast extends React.Component {
     // Get forecast from openweather api
     const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast/'
     const { updateCurrentSearch, location } = this.props
-    const city = location.pathname.split('/')[2]
+    const params = qs.parse(location.search)
+    const city = params.c
     const apiKey = '52ebf7e7ac1cc952fdeb6fd0e93a7a57'
     const url = `${baseUrl}?q=${city}&appid=${apiKey}&cnt=40`
     //  Update state to get current search
@@ -77,13 +79,41 @@ export default class Forecast extends React.Component {
           forecast: formatingForecast(response.data.list),
         }))
       })
-      .catch((err) => {
+      .catch(() => {
         this.setState(() => ({
           loading: false,
           title: 'Oops, something wrong happened. Maybe there is no data for the city you searched for.',
           forecast: [],
         }))
       })
+  }
+
+  componentWillReceiveProps(nextprops) {
+    const { currentSearch } = this.props
+
+    if (currentSearch !== nextprops.currentSearch) {
+      // Get forecast from openweather api
+      const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast/'
+      const city = nextprops.currentSearch
+      const apiKey = '52ebf7e7ac1cc952fdeb6fd0e93a7a57'
+      const url = `${baseUrl}?q=${city}&appid=${apiKey}&cnt=40`
+
+      axios.get(url)
+        .then((response) => {
+          this.setState(() => ({
+            loading: false,
+            title: city,
+            forecast: formatingForecast(response.data.list),
+          }))
+        })
+        .catch(() => {
+          this.setState(() => ({
+            loading: false,
+            title: 'Oops, something wrong happened. Maybe there is no data for the city you searched for.',
+            forecast: [],
+          }))
+        })
+    }
   }
 
   render() {
@@ -138,4 +168,5 @@ export default class Forecast extends React.Component {
 Forecast.propTypes = {
   updateCurrentSearch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
+  currentSearch: PropTypes.string.isRequired,
 }
