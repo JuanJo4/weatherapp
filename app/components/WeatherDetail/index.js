@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import qs from 'query-string'
 import Moment from 'react-moment'
 import { GridLoader } from 'react-spinners'
-import Wrapper from './styledComponents'
+import { Wrapper, BackButton } from './styledComponents'
 
 export default class WeatherDetail extends React.Component {
   constructor(props) {
@@ -46,6 +46,7 @@ export default class WeatherDetail extends React.Component {
     const {
       loading, date, city, description, tempmin, tempmax, humidity, icon,
     } = this.state
+    const { history } = this.props
 
     return (
       <Wrapper>
@@ -67,6 +68,8 @@ export default class WeatherDetail extends React.Component {
         <p>{`min temp: ${(tempmin - 273.15).toFixed(2)} degrees`}</p>
         <p>{`max temp: ${(tempmax - 273.15).toFixed(2)} degrees`}</p>
         <p>{`humidity: ${humidity}`}</p>
+
+        <BackButton onClick={history.goBack} type="button">Go Back</BackButton>
       </Wrapper>
     )
   }
@@ -75,4 +78,5 @@ export default class WeatherDetail extends React.Component {
 WeatherDetail.propTypes = {
   updateCurrentSearch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }

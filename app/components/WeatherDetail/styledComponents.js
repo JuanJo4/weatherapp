@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,4 +22,15 @@ const Wrapper = styled.div`
         line-height: 1.8em;
     }
 `
-export { Wrapper as default }
+
+export const BackButton = styled.button`
+    padding: 15px;
+    background: #ff6025;
+    border-radius: 5px;
+    color: #fff;
+    margin: 50px 0px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Raleway';
+`

@@ -70,3 +70,12 @@ export const Hours = styled.div`
         }
     }
 `
+
+export const BackButton = styled.a`
+    padding: 15px;
+    background: #ff6025;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 50px;
+`

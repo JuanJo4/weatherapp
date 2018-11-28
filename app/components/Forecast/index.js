@@ -6,7 +6,7 @@ import moment from 'moment'
 import qs from 'query-string'
 import { GridLoader } from 'react-spinners'
 import {
-  Wrapper, ForecastWrapper, Day, Hours,
+  Wrapper, ForecastWrapper, Day, Hours, BackButton,
 } from './styledComponents'
 
 function formatingForecast(data) {
@@ -89,7 +89,7 @@ export default class Forecast extends React.Component {
   }
 
   componentWillReceiveProps(nextprops) {
-    const { currentSearch } = this.props
+    const { currentSearch, history } = this.props
 
     if (currentSearch !== nextprops.currentSearch) {
       // Get forecast from openweather api
@@ -105,6 +105,8 @@ export default class Forecast extends React.Component {
             title: city,
             forecast: formatingForecast(response.data.list),
           }))
+
+          history.push(`/forecast?c=${city}`)
         })
         .catch(() => {
           this.setState(() => ({
@@ -160,6 +162,7 @@ export default class Forecast extends React.Component {
             )
           })}
         </ForecastWrapper>
+        <BackButton href="/">Go Back</BackButton>
       </Wrapper>
     )
   }
@@ -169,4 +172,5 @@ Forecast.propTypes = {
   updateCurrentSearch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   currentSearch: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 }
