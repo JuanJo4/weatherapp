@@ -4,12 +4,8 @@ import { Redirect, Switch } from 'react-router'
 import { Form, Input, SubmitButton } from './styledComponents'
 
 export default class LocationForm extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      toForecast: false,
-    }
+  state = {
+    toForecast: false,
   }
 
   handleChange = (event) => {
