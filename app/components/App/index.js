@@ -13,18 +13,14 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      currentSearch: '',
-    }
+  state = {
+    currentSearch: '',
   }
 
   updateCurrentSearch = (q) => {
-    this.setState(() => ({
+    this.setState({
       currentSearch: q,
-    }))
+    })
   }
 
   render() {
