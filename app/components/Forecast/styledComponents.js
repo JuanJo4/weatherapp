@@ -11,12 +11,14 @@ export const Wrapper = styled.div`
         padding: 0 100px;
     }
 `
+
 export const ForecastWrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 1em;
 `
+
 export const Day = styled.div`
     display: flex;
     flex-direction: column;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import LocationForm from '../LocationForm'
 import Box from './styledComponents'
 
-export default function Home(props) {
+const Home = (props) => {
   const { heroText, currentSearch, updateCurrentSearch } = props
 
   return (
@@ -19,3 +19,5 @@ Home.propTypes = {
   updateCurrentSearch: PropTypes.func.isRequired,
   currentSearch: PropTypes.string.isRequired,
 }
+
+export default Home

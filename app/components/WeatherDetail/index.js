@@ -29,7 +29,7 @@ export default class WeatherDetail extends React.Component {
 
     //  Update state to get current search
     updateCurrentSearch(city)
-
+    // no es necesario que sea una funcion
     this.setState(() => ({
       loading: false,
       date,
@@ -43,8 +43,16 @@ export default class WeatherDetail extends React.Component {
   }
 
   render() {
+    // mas de tres variables en el destructor deben ser una por linea
     const {
-      loading, date, city, description, tempmin, tempmax, humidity, icon,
+      loading,
+      date,
+      city,
+      description,
+      tempmin,
+      tempmax,
+      humidity,
+      icon,
     } = this.state
     const { history } = this.props
 

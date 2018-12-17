@@ -6,9 +6,14 @@ import moment from 'moment'
 import qs from 'query-string'
 import { GridLoader } from 'react-spinners'
 import {
-  Wrapper, ForecastWrapper, Day, Hours, BackButton,
+  Wrapper,
+  ForecastWrapper,
+  Day,
+  Hours,
+  BackButton,
 } from './styledComponents'
 
+// Estas funciones pueden ser incluidas en un utils file
 function formatingForecast(data) {
   const res = []
 
@@ -51,13 +56,9 @@ function formatingForecast(data) {
 }
 
 export default class Forecast extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      loading: true,
-      forecast: [],
-    }
+  state = {
+    loading: true,
+    forecast: [],
   }
 
   componentDidMount() {
@@ -88,6 +89,7 @@ export default class Forecast extends React.Component {
       })
   }
 
+  // Este metodo de ciclo de vida fue deprecado
   componentWillReceiveProps(nextprops) {
     const { currentSearch, history } = this.props
 
@@ -109,11 +111,11 @@ export default class Forecast extends React.Component {
           history.push(`/forecast?c=${city}`)
         })
         .catch(() => {
-          this.setState(() => ({
+          this.setState({
             loading: false,
             title: 'Oops, something wrong happened. Maybe there is no data for the city you searched for.',
             forecast: [],
-          }))
+          })
         })
     }
   }
