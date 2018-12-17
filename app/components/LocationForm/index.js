@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Redirect, Switch } from 'react-router'
 import { Form, Input, SubmitButton } from './styledComponents'
 
-export default class LocationForm extends React.Component {
+class LocationForm extends React.Component {
   state = {
     toForecast: false,
   }
@@ -50,3 +50,5 @@ LocationForm.defaultProps = {
   placeholder: '',
   currentSearch: '',
 }
+
+export default LocationForm
